@@ -33,8 +33,6 @@ func submitMetadata(duration time.Duration) {
 		return
 	}
 
-	fmt.Println("Encoded Data", encodedData)
-
 	// try and submit the data to the server
 	url := "http://127.0.0.1:9100/compilation"
 

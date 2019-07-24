@@ -14,7 +14,7 @@ var entriesLock = sync.Mutex{}
 var entries = []annals.CompilationMetadata{}
 
 func main() {
-	http.HandleFunc("/compilation", func (w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/compilation", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "POST" {
 			var metadata annals.CompilationMetadata
 
@@ -38,14 +38,12 @@ func main() {
 			// add the entry to the list
 			entries = append(entries, metadata)
 
-			fmt.Println("Adding entry into list")
-
 		} else {
 			w.WriteHeader(http.StatusBadRequest)
 		}
 	})
 
-	http.HandleFunc("/results", func (w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/results", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "GET" {
 			entriesLock.Lock()
 			defer entriesLock.Unlock()
