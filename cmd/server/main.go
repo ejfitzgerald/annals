@@ -38,6 +38,8 @@ func main() {
 			// add the entry to the list
 			entries = append(entries, metadata)
 
+			fmt.Println("Adding entry")
+
 		} else {
 			w.WriteHeader(http.StatusBadRequest)
 		}
@@ -58,6 +60,8 @@ func main() {
 			entries = []annals.CompilationMetadata{}
 
 			w.Write(data)
+
+			fmt.Println("Clearing entries")
 		} else {
 			w.WriteHeader(http.StatusBadRequest)
 		}
